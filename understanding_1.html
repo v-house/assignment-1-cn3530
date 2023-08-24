@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3fd381beb7814b77606f3105724b3bd5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3fd381beb7814b77606f3105724b3bd5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3fd381beb7814b77606f3105724b3bd5 = L.map(
+                "map_3fd381beb7814b77606f3105724b3bd5",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_3fd381beb7814b77606f3105724b3bd5);
+
+            
+
+        
+    
+            var tile_layer_6a781c731000838d3b99d47252b1f62f = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca target=\"_blank\" href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca target=\"_blank\" href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var circle_marker_f67919ac64c31cacf1169298ddf2d52c = L.circleMarker(
+                [19.076, 72.8774],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_fc044b4b1a9ae5f9079db941a7be88ee = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_24d540efc3c3ff0357483aa1936ad13b = $(`<div id="html_24d540efc3c3ff0357483aa1936ad13b" style="width: 100.0%; height: 100.0%;">Krunalshah Software Private Limited</div>`)[0];
+                popup_fc044b4b1a9ae5f9079db941a7be88ee.setContent(html_24d540efc3c3ff0357483aa1936ad13b);
+            
+        
+
+        circle_marker_f67919ac64c31cacf1169298ddf2d52c.bindPopup(popup_fc044b4b1a9ae5f9079db941a7be88ee)
+        ;
+
+        
+    
+    
+            var circle_marker_1fc09fa2763c688fd03aa4734c6680cb = L.circleMarker(
+                [28.6668, 77.2167],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_345fcaff177e7a48fc378d9e26a7cad5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_69576d173a910fe3f56ac7e18f8081fc = $(`<div id="html_69576d173a910fe3f56ac7e18f8081fc" style="width: 100.0%; height: 100.0%;">National Internet Exchange of India</div>`)[0];
+                popup_345fcaff177e7a48fc378d9e26a7cad5.setContent(html_69576d173a910fe3f56ac7e18f8081fc);
+            
+        
+
+        circle_marker_1fc09fa2763c688fd03aa4734c6680cb.bindPopup(popup_345fcaff177e7a48fc378d9e26a7cad5)
+        ;
+
+        
+    
+    
+            var circle_marker_a4c772745f660abef5adf4b0bc85dd59 = L.circleMarker(
+                [37.406, -122.0785],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_b77c5e1dd46f630dab6755db86999111 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c7d04abac90a08c72649714d948a44e7 = $(`<div id="html_c7d04abac90a08c72649714d948a44e7" style="width: 100.0%; height: 100.0%;">Google LLC</div>`)[0];
+                popup_b77c5e1dd46f630dab6755db86999111.setContent(html_c7d04abac90a08c72649714d948a44e7);
+            
+        
+
+        circle_marker_a4c772745f660abef5adf4b0bc85dd59.bindPopup(popup_b77c5e1dd46f630dab6755db86999111)
+        ;
+
+        
+    
+    
+            ant_path_a128b16d0b2bfba529ff357430c7bb91 = L.polyline.antPath(
+              [[19.076, 72.8774], [28.6668, 77.2167], [37.406, -122.0785]],
+              {"bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+        ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var poly_line_3315715eee4b0ee3068d6756b7f46038 = L.polyline(
+                [[19.076, 72.8774], [28.6668, 77.2167]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var circle_marker_ada0697e5bac8b17284efb528cc45681 = L.circleMarker(
+                [19.076, 72.8774],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_a6d274fb129718964e6c28c7be484d2f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7feb6b42e55776f32fd97430870b6ced = $(`<div id="html_7feb6b42e55776f32fd97430870b6ced" style="width: 100.0%; height: 100.0%;">Krunalshah Software Private (Mumbai)</div>`)[0];
+                popup_a6d274fb129718964e6c28c7be484d2f.setContent(html_7feb6b42e55776f32fd97430870b6ced);
+            
+        
+
+        circle_marker_ada0697e5bac8b17284efb528cc45681.bindPopup(popup_a6d274fb129718964e6c28c7be484d2f)
+        ;
+
+        
+    
+    
+            var circle_marker_5badc097cfc96e5404805c12d5d1243f = L.circleMarker(
+                [50.1109, 8.682],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_e3dae3db8e50c1aa273e11d4ee99580b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8b92f1b6fc213c6cbe67d8423791378d = $(`<div id="html_8b92f1b6fc213c6cbe67d8423791378d" style="width: 100.0%; height: 100.0%;">DE-CIX Management GmbH (Germany)</div>`)[0];
+                popup_e3dae3db8e50c1aa273e11d4ee99580b.setContent(html_8b92f1b6fc213c6cbe67d8423791378d);
+            
+        
+
+        circle_marker_5badc097cfc96e5404805c12d5d1243f.bindPopup(popup_e3dae3db8e50c1aa273e11d4ee99580b)
+        ;
+
+        
+    
+    
+            var circle_marker_bc4761d398e1b27fd398935655525ecf = L.circleMarker(
+                [55.7523, 37.6155],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_233cb468aab048b470b3a2bbf004aad1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_18374a6013ff1081b9c8b43e7c292ac0 = $(`<div id="html_18374a6013ff1081b9c8b43e7c292ac0" style="width: 100.0%; height: 100.0%;">Yandex LLC (Moscow)</div>`)[0];
+                popup_233cb468aab048b470b3a2bbf004aad1.setContent(html_18374a6013ff1081b9c8b43e7c292ac0);
+            
+        
+
+        circle_marker_bc4761d398e1b27fd398935655525ecf.bindPopup(popup_233cb468aab048b470b3a2bbf004aad1)
+        ;
+
+        
+    
+    
+            ant_path_909be180c93e46ac7d98406ed96d6e0e = L.polyline.antPath(
+              [[19.076, 72.8774], [50.1109, 8.682], [55.7523, 37.6155]],
+              {"bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+        ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var circle_marker_35d8b3eb5cd09aefc55837deb1ec54e4 = L.circleMarker(
+                [19.076, 72.8774],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_3fafb82b7def5ce40917e66da03243c0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_89607b9dcf6a89b93c839eb56b9bb581 = $(`<div id="html_89607b9dcf6a89b93c839eb56b9bb581" style="width: 100.0%; height: 100.0%;">Krunalshah Software Private (Mumbai)</div>`)[0];
+                popup_3fafb82b7def5ce40917e66da03243c0.setContent(html_89607b9dcf6a89b93c839eb56b9bb581);
+            
+        
+
+        circle_marker_35d8b3eb5cd09aefc55837deb1ec54e4.bindPopup(popup_3fafb82b7def5ce40917e66da03243c0)
+        ;
+
+        
+    
+    
+            var circle_marker_0c2c7ba08c156ee2f46d9e573f58744b = L.circleMarker(
+                [13.0879, 80.2785],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_c217716caa838100ecd0ec4398779c68 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5a931b258fbb3aa915b6024aa662180f = $(`<div id="html_5a931b258fbb3aa915b6024aa662180f" style="width: 100.0%; height: 100.0%;">CloudFlare Inc.</div>`)[0];
+                popup_c217716caa838100ecd0ec4398779c68.setContent(html_5a931b258fbb3aa915b6024aa662180f);
+            
+        
+
+        circle_marker_0c2c7ba08c156ee2f46d9e573f58744b.bindPopup(popup_c217716caa838100ecd0ec4398779c68)
+        ;
+
+        
+    
+    
+            var circle_marker_7e32bf7c22b13ff0df10c873591406b7 = L.circleMarker(
+                [37.7757, -122.3952],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_2e95a1b93b7a48135b122363c3df456e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7c914daaedc422f6583b2654da70d072 = $(`<div id="html_7c914daaedc422f6583b2654da70d072" style="width: 100.0%; height: 100.0%;">CloudFlare Inc.</div>`)[0];
+                popup_2e95a1b93b7a48135b122363c3df456e.setContent(html_7c914daaedc422f6583b2654da70d072);
+            
+        
+
+        circle_marker_7e32bf7c22b13ff0df10c873591406b7.bindPopup(popup_2e95a1b93b7a48135b122363c3df456e)
+        ;
+
+        
+    
+    
+            ant_path_2645d9fa9d9148626260070dc2c69242 = L.polyline.antPath(
+              [[19.076, 72.8774], [13.0879, 80.2785], [37.7757, -122.3952]],
+              {"bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+        ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var poly_line_4a59fb4336f1f7603a088835580df1c1 = L.polyline(
+                [[19.076, 72.8774], [13.0879, 80.2785]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var circle_marker_3cb767ea3892a743e4ec70ff842fb17d = L.circleMarker(
+                [19.076, 72.8774],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_d415bc1c2f45e059980f6b5072a3e6ff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_600b12d3bb41042e2e22eb1a02fefd90 = $(`<div id="html_600b12d3bb41042e2e22eb1a02fefd90" style="width: 100.0%; height: 100.0%;">Krunalshah Software Private Limited</div>`)[0];
+                popup_d415bc1c2f45e059980f6b5072a3e6ff.setContent(html_600b12d3bb41042e2e22eb1a02fefd90);
+            
+        
+
+        circle_marker_3cb767ea3892a743e4ec70ff842fb17d.bindPopup(popup_d415bc1c2f45e059980f6b5072a3e6ff)
+        ;
+
+        
+    
+    
+            var circle_marker_1046fc9d85b42b8a463cf3d5882b9008 = L.circleMarker(
+                [28.6668, 77.2167],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_6342d9e34060a4c8197b5e11b7757ef4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0f175dfcda4127701047d04575ef21c7 = $(`<div id="html_0f175dfcda4127701047d04575ef21c7" style="width: 100.0%; height: 100.0%;">National Internet Exchange of India</div>`)[0];
+                popup_6342d9e34060a4c8197b5e11b7757ef4.setContent(html_0f175dfcda4127701047d04575ef21c7);
+            
+        
+
+        circle_marker_1046fc9d85b42b8a463cf3d5882b9008.bindPopup(popup_6342d9e34060a4c8197b5e11b7757ef4)
+        ;
+
+        
+    
+    
+            var circle_marker_131a4a6e0555ed51db847a8f738ac3a5 = L.circleMarker(
+                [37.4369, -122.1936],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_b15308535d26b2925bfb437c1d2dc4e6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_91a220cdf721873c5f33612ab97f975e = $(`<div id="html_91a220cdf721873c5f33612ab97f975e" style="width: 100.0%; height: 100.0%;">Facebook Inc.</div>`)[0];
+                popup_b15308535d26b2925bfb437c1d2dc4e6.setContent(html_91a220cdf721873c5f33612ab97f975e);
+            
+        
+
+        circle_marker_131a4a6e0555ed51db847a8f738ac3a5.bindPopup(popup_b15308535d26b2925bfb437c1d2dc4e6)
+        ;
+
+        
+    
+    
+            ant_path_24349bb0b1f96bbd33fd464fbd26fb3c = L.polyline.antPath(
+              [[19.076, 72.8774], [28.6668, 77.2167], [37.4369, -122.1936]],
+              {"bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+        ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var poly_line_892efac5a8820ef1c09a9f045dfe4866 = L.polyline(
+                [[19.076, 72.8774], [28.6668, 77.2167]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var circle_marker_5799e5935f388c544cbfc672dbb6e711 = L.circleMarker(
+                [19.076, 72.8774],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_5606a3d1824e44ce901d5d00f140608c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_75adb871ab95ec4f9d72663d6556a494 = $(`<div id="html_75adb871ab95ec4f9d72663d6556a494" style="width: 100.0%; height: 100.0%;">Krunalshah Software Private (Mumbai)</div>`)[0];
+                popup_5606a3d1824e44ce901d5d00f140608c.setContent(html_75adb871ab95ec4f9d72663d6556a494);
+            
+        
+
+        circle_marker_5799e5935f388c544cbfc672dbb6e711.bindPopup(popup_5606a3d1824e44ce901d5d00f140608c)
+        ;
+
+        
+    
+    
+            var circle_marker_5d059f03c833b40722b52fc7bec6f9b0 = L.circleMarker(
+                [28.6668, 77.2167],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_812921f971cbdf3a25191dd4c057d949 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9193bfe9661afbc0a57e78dbbc6feb4a = $(`<div id="html_9193bfe9661afbc0a57e78dbbc6feb4a" style="width: 100.0%; height: 100.0%;">National Internet Exchange (Delhi)</div>`)[0];
+                popup_812921f971cbdf3a25191dd4c057d949.setContent(html_9193bfe9661afbc0a57e78dbbc6feb4a);
+            
+        
+
+        circle_marker_5d059f03c833b40722b52fc7bec6f9b0.bindPopup(popup_812921f971cbdf3a25191dd4c057d949)
+        ;
+
+        
+    
+    
+            var circle_marker_716c848d7db72b5675606e921993f756 = L.circleMarker(
+                [37.406, -122.0785],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_6cfee04c40998229ef685a23581f1534 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_92c8ee2c5c3d6b9d630ed04d278086d4 = $(`<div id="html_92c8ee2c5c3d6b9d630ed04d278086d4" style="width: 100.0%; height: 100.0%;">Google LLC (California)</div>`)[0];
+                popup_6cfee04c40998229ef685a23581f1534.setContent(html_92c8ee2c5c3d6b9d630ed04d278086d4);
+            
+        
+
+        circle_marker_716c848d7db72b5675606e921993f756.bindPopup(popup_6cfee04c40998229ef685a23581f1534)
+        ;
+
+        
+    
+    
+            var circle_marker_55a600b4fab497b29acfa1109c3dde08 = L.circleMarker(
+                [39.0997, -94.5786],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_8f43afd8ae617de69857818e41086a7b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f6b68a88ee5e6a433290edba3886c20a = $(`<div id="html_f6b68a88ee5e6a433290edba3886c20a" style="width: 100.0%; height: 100.0%;">Google LLC (Missouri, US)</div>`)[0];
+                popup_8f43afd8ae617de69857818e41086a7b.setContent(html_f6b68a88ee5e6a433290edba3886c20a);
+            
+        
+
+        circle_marker_55a600b4fab497b29acfa1109c3dde08.bindPopup(popup_8f43afd8ae617de69857818e41086a7b)
+        ;
+
+        
+    
+    
+            ant_path_fa0bfe17ce9e15eda63adefac5e41ede = L.polyline.antPath(
+              [[19.076, 72.8774], [28.6668, 77.2167], [37.406, -122.0785], [39.0997, -94.5786]],
+              {"bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+        ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var poly_line_21c563f3d279a6e1b16588b63bcb9712 = L.polyline(
+                [[19.076, 72.8774], [28.6668, 77.2167]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var poly_line_3a8cd0c06bd071fe3e849a9b35eaa37f = L.polyline(
+                [[28.6668, 77.2167], [37.406, -122.0785]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+            var circle_marker_e519ef044247e7eb5c19a9843767a581 = L.circleMarker(
+                [19.076, 72.8774],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_4f93b0d32d433883ee8c3b0dda23ebeb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2ea23d3a54eb6e817fe32b07259fe4cf = $(`<div id="html_2ea23d3a54eb6e817fe32b07259fe4cf" style="width: 100.0%; height: 100.0%;">Krunalshah Software Private Limited</div>`)[0];
+                popup_4f93b0d32d433883ee8c3b0dda23ebeb.setContent(html_2ea23d3a54eb6e817fe32b07259fe4cf);
+            
+        
+
+        circle_marker_e519ef044247e7eb5c19a9843767a581.bindPopup(popup_4f93b0d32d433883ee8c3b0dda23ebeb)
+        ;
+
+        
+    
+    
+            var circle_marker_0623ee65b2260a5833bb47c713f48ec8 = L.circleMarker(
+                [47.6829, -122.1209],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+    
+        var popup_a46a290f267d8b5920d97821f5422c3a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_02fcb92fd17e48398f28d0015c3b2e13 = $(`<div id="html_02fcb92fd17e48398f28d0015c3b2e13" style="width: 100.0%; height: 100.0%;">Microsoft Corporation</div>`)[0];
+                popup_a46a290f267d8b5920d97821f5422c3a.setContent(html_02fcb92fd17e48398f28d0015c3b2e13);
+            
+        
+
+        circle_marker_0623ee65b2260a5833bb47c713f48ec8.bindPopup(popup_a46a290f267d8b5920d97821f5422c3a)
+        ;
+
+        
+    
+    
+            ant_path_aba4dcf70f7c32d395fbeaee1208905f = L.polyline.antPath(
+              [[19.076, 72.8774], [47.6829, -122.1209]],
+              {"bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+        ).addTo(map_3fd381beb7814b77606f3105724b3bd5);
+        
+</script>
+</html>

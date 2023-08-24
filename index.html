@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .course-info {
+            text-align: center;
+        }
+
+        .team-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .team-members {
+            font-weight: bold;
+        }
+
+        .understanding {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .understanding h3 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .source,
+        .ip-address {
+            font-weight: bold;
+        }
+
+        .open-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .open-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>CN3530</h2>
+        <h1>Computer Networks</h1>
+        <p>25 August, 2023</p>
+    </header>
+    <div class="container">
+        <div class="course-info">
+            <h2>Assignment 1</h2>
+        </div>
+        <div class="team-info">
+            <p>Group <span id="team-number">40</span></p>
+            <p class="team-members">Team Members: <span id="team-members">K Vivek Kumar (CS21BTECH11026), </span><span
+                    id="team-members">Adarsh Suresh Bhende (CS21BTECH11008), </span><span id="team-members">Jarupula Sai
+                    Kumar (CS21BTECH11023)</span></p>
+        </div>
+        <section id="understandings">
+            <div class="understanding">
+                <h3>Understanding 1</h3>
+                <p>Source: <span class="source"></span></p>
+                <p>IP Address: <span class="ip-address"></span></p>
+                <button class="open-button">Open HTML</button>
+            </div>
+            <div class="understanding">
+                <h3>Understanding 2</h3>
+                <p>Source: <span class="source"></span></p>
+                <p>IP Address: <span class="ip-address"></span></p>
+                <button class="open-button">Open HTML</button>
+            </div>
+        </section>
+    </div>
+    <script>
+        const understandings = [
+            {
+                source: 'Mumbai, Maharashtra',
+                ipAddress: '103.159.84.1',
+                htmlFile: 'understanding_1.html'
+            },
+            {
+                source: 'IIT Hyderabad',
+                ipAddress: '192.168.137.1',
+                htmlFile: 'understanding_2.html'
+            },
+        ];
+        const understandingElements = document.querySelectorAll('.understanding');
+
+        for (let i = 0; i < understandingElements.length; i++) {
+            const understanding = understandings[i];
+            const sourceElement = understandingElements[i].querySelector('.source');
+            const ipAddressElement = understandingElements[i].querySelector('.ip-address');
+            const openButton = understandingElements[i].querySelector('.open-button');
+
+            sourceElement.textContent = understanding.source;
+            ipAddressElement.textContent = understanding.ipAddress;
+
+            openButton.addEventListener('click', () => {
+                window.open(understanding.htmlFile, '_blank');
+            });
+        }
+
+    </script>
+</body>
+
+</html>
