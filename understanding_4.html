@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" />
+
+    <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map_d0ee41645a44a433c275d92252e6476b {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+
+        .leaflet-container {
+            font-size: 1rem;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+</head>
+
+<body>
+
+    <style>
+        /* Reset default margin and padding */
+        body,
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar-item {
+            margin: 0 10px;
+        }
+
+        /* Color descriptions */
+        .color-description {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .color-circle {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        /* Optional: Add media query for responsiveness */
+        @media screen and (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .navbar-list {
+                margin-top: 10px;
+            }
+
+            .navbar-item {
+                margin: 5px 0;
+            }
+        }
+    </style>
+    <nav class="navbar">
+        <div class="navbar-logo">Understanding 4</div>
+        <ul class="navbar-list">
+            <li class="navbar-item">
+                <span class="color-circle" style="background-color: green;"></span>
+                <span class="color-description">Source of the packet</span>
+            </li>
+            <li class="navbar-item">
+                <span class="color-circle" style="background-color: yellow;"></span>
+                <span class="color-description">Intermediate ISP</span>
+            </li>
+            <li class="navbar-item">
+                <span class="color-circle" style="background-color: red;"></span>
+                <span class="color-description">Destination of the packet</span>
+            </li>
+            <li class="navbar-item">
+                <span class="color-circle" style="background-color: lightblue;"></span>
+                <span class="color-description">IXP</span>
+            </li>
+        </ul>
+    </nav>
+    <div class="folium-map" id="map_d0ee41645a44a433c275d92252e6476b"></div>
+
+</body>
+<script>
+
+
+    var map_d0ee41645a44a433c275d92252e6476b = L.map(
+        "map_d0ee41645a44a433c275d92252e6476b",
+        {
+            center: [0.0, 0.0],
+            crs: L.CRS.EPSG3857,
+            zoom: 2,
+            zoomControl: true,
+            preferCanvas: false,
+        }
+    );
+    L.control.scale().addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+
+
+
+    var tile_layer_4f40722dcc2bfe51d042d902cadeff25 = L.tileLayer(
+        "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+        { "attribution": "\u0026copy; \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca target=\"_blank\" href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca target=\"_blank\" href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var circle_marker_ca4b6f98d2227bed88a6a90d02b94f1e = L.circleMarker(
+        [-33.8678, 151.207],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_e3688f1bd55f96868f5f867e15caaa0c = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_205f6897863e08d52dba7ba986c30091 = $(`<div id="html_205f6897863e08d52dba7ba986c30091" style="width: 100.0%; height: 100.0%;">Resilans AB</div>`)[0];
+    popup_e3688f1bd55f96868f5f867e15caaa0c.setContent(html_205f6897863e08d52dba7ba986c30091);
+
+
+
+    circle_marker_ca4b6f98d2227bed88a6a90d02b94f1e.bindPopup(popup_e3688f1bd55f96868f5f867e15caaa0c)
+        ;
+
+
+
+
+    var circle_marker_e24a4747dfcedafe61c8d11ec685af31 = L.circleMarker(
+        [45.4643, 9.1885],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_2ebaf0553ed3d374ee293290339c9c74 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_01760971090daca9943d23560b1ece5c = $(`<div id="html_01760971090daca9943d23560b1ece5c" style="width: 100.0%; height: 100.0%;">Venus Business Communications Limited</div>`)[0];
+    popup_2ebaf0553ed3d374ee293290339c9c74.setContent(html_01760971090daca9943d23560b1ece5c);
+
+
+
+    circle_marker_e24a4747dfcedafe61c8d11ec685af31.bindPopup(popup_2ebaf0553ed3d374ee293290339c9c74)
+        ;
+
+
+
+
+    var circle_marker_1454b2698f6aebea3ceb63aaf85bd4d3 = L.circleMarker(
+        [22.2855, 114.1577],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_9c2511fe0c9909677c21930e022e4558 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_da70d2b5924392915daf8a756f9606b5 = $(`<div id="html_da70d2b5924392915daf8a756f9606b5" style="width: 100.0%; height: 100.0%;">Telstra Global</div>`)[0];
+    popup_9c2511fe0c9909677c21930e022e4558.setContent(html_da70d2b5924392915daf8a756f9606b5);
+
+
+
+    circle_marker_1454b2698f6aebea3ceb63aaf85bd4d3.bindPopup(popup_9c2511fe0c9909677c21930e022e4558)
+        ;
+
+
+
+
+    var circle_marker_ffc80b8c49e8309950e9f318551ce3fc = L.circleMarker(
+        [35.6895, 139.6923],
+        { "bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_0234abe500c5fd80954ddaf0dabb8ed2 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_625dbc7e973fc273f90c88651d7816fa = $(`<div id="html_625dbc7e973fc273f90c88651d7816fa" style="width: 100.0%; height: 100.0%;">Telstra Global</div>`)[0];
+    popup_0234abe500c5fd80954ddaf0dabb8ed2.setContent(html_625dbc7e973fc273f90c88651d7816fa);
+
+
+
+    circle_marker_ffc80b8c49e8309950e9f318551ce3fc.bindPopup(popup_0234abe500c5fd80954ddaf0dabb8ed2)
+        ;
+
+
+
+
+    ant_path_2329ea224f3fd5607ea6b857b8a8b911 = L.polyline.antPath(
+        [[-33.8678, 151.207], [45.4643, 9.1885], [22.2855, 114.1577], [35.6895, 139.6923]],
+        { "bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var circle_marker_5b6c62a02815dd05f1054289a4b8f642 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_1d68b7d7d0658649b62081502dd8d0e3 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_94fd9be319db7940e32352a4c2a0a183 = $(`<div id="html_94fd9be319db7940e32352a4c2a0a183" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_1d68b7d7d0658649b62081502dd8d0e3.setContent(html_94fd9be319db7940e32352a4c2a0a183);
+
+
+
+    circle_marker_5b6c62a02815dd05f1054289a4b8f642.bindPopup(popup_1d68b7d7d0658649b62081502dd8d0e3)
+        ;
+
+
+
+
+    var marker_ff659f42e33e93b9d124afe1245b904a = L.marker(
+        [50.1109, 8.682],
+        {}
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_36ff7095509a950c01013a921a9e2fd6 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_69893211d9ed735cb36d28385ff2b1cf = $(`<div id="html_69893211d9ed735cb36d28385ff2b1cf" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_36ff7095509a950c01013a921a9e2fd6.setContent(html_69893211d9ed735cb36d28385ff2b1cf);
+
+
+
+    marker_ff659f42e33e93b9d124afe1245b904a.bindPopup(popup_36ff7095509a950c01013a921a9e2fd6)
+        ;
+
+
+
+
+    marker_ff659f42e33e93b9d124afe1245b904a.bindTooltip(
+        `<div>
+                     DE-CIX Deutscher Commercial Internet Exchange - IXP
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var circle_marker_40884e67f29f25ac2c6f473b62b4f8c4 = L.circleMarker(
+        [-33.8678, 151.207],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_d64aa4e87f7f043d590548068869e9ef = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_76dcef58774b7f463fc8a5ad3f3e6659 = $(`<div id="html_76dcef58774b7f463fc8a5ad3f3e6659" style="width: 100.0%; height: 100.0%;">NetActuate Inc</div>`)[0];
+    popup_d64aa4e87f7f043d590548068869e9ef.setContent(html_76dcef58774b7f463fc8a5ad3f3e6659);
+
+
+
+    circle_marker_40884e67f29f25ac2c6f473b62b4f8c4.bindPopup(popup_d64aa4e87f7f043d590548068869e9ef)
+        ;
+
+
+
+
+    var circle_marker_84db8ca553d2ec14e9463281190567fe = L.circleMarker(
+        [-31.9522, 115.8614],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_010090b636e9636adbb56ede96fe0ccc = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_6efc358df75fce4ee58ff8a30a5005d6 = $(`<div id="html_6efc358df75fce4ee58ff8a30a5005d6" style="width: 100.0%; height: 100.0%;">Telstra Internet</div>`)[0];
+    popup_010090b636e9636adbb56ede96fe0ccc.setContent(html_6efc358df75fce4ee58ff8a30a5005d6);
+
+
+
+    circle_marker_84db8ca553d2ec14e9463281190567fe.bindPopup(popup_010090b636e9636adbb56ede96fe0ccc)
+        ;
+
+
+
+
+    var circle_marker_ea73961f08c2d36f2464fa2d8fc810a3 = L.circleMarker(
+        [22.2855, 114.1577],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_91e1b78f3e71d4fed5de7605a063c2c9 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_fefe972f8740c6ed2607bf67a496b299 = $(`<div id="html_fefe972f8740c6ed2607bf67a496b299" style="width: 100.0%; height: 100.0%;">Reach Multi Media Satellite Services</div>`)[0];
+    popup_91e1b78f3e71d4fed5de7605a063c2c9.setContent(html_fefe972f8740c6ed2607bf67a496b299);
+
+
+
+    circle_marker_ea73961f08c2d36f2464fa2d8fc810a3.bindPopup(popup_91e1b78f3e71d4fed5de7605a063c2c9)
+        ;
+
+
+
+
+    var circle_marker_b3ef6dae9b76c48a08741aadb036b26b = L.circleMarker(
+        [37.4441, -122.1602],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_4f8233326428b0ff92616c9bc6c8666c = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_cb54a8ea48a17e1a4625fb27358aee32 = $(`<div id="html_cb54a8ea48a17e1a4625fb27358aee32" style="width: 100.0%; height: 100.0%;">Reach Multi Media Satellite Services</div>`)[0];
+    popup_4f8233326428b0ff92616c9bc6c8666c.setContent(html_cb54a8ea48a17e1a4625fb27358aee32);
+
+
+
+    circle_marker_b3ef6dae9b76c48a08741aadb036b26b.bindPopup(popup_4f8233326428b0ff92616c9bc6c8666c)
+        ;
+
+
+
+
+    var circle_marker_8ee1bf368bdda2a4bd42fe2729865b41 = L.circleMarker(
+        [45.5235, -122.6765],
+        { "bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_cfd04be94c3c7ca2382ef8172ab133ef = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_ac1c77db3ca7128d2acad49ec68d9b4a = $(`<div id="html_ac1c77db3ca7128d2acad49ec68d9b4a" style="width: 100.0%; height: 100.0%;">Amazon.com Inc.</div>`)[0];
+    popup_cfd04be94c3c7ca2382ef8172ab133ef.setContent(html_ac1c77db3ca7128d2acad49ec68d9b4a);
+
+
+
+    circle_marker_8ee1bf368bdda2a4bd42fe2729865b41.bindPopup(popup_cfd04be94c3c7ca2382ef8172ab133ef)
+        ;
+
+
+
+
+    ant_path_e8eddaf4faa609e7dfc3745f45c3d2e4 = L.polyline.antPath(
+        [[-33.8678, 151.207], [-31.9522, 115.8614], [22.2855, 114.1577], [37.4441, -122.1602], [45.5235, -122.6765]],
+        { "bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var poly_line_a0a3751768248aa5ff48585cdb3b8815 = L.polyline(
+        [[-33.8678, 151.207], [-31.9522, 115.8614]],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var poly_line_82bf3c9990bb170da2ed5e921cd891b6 = L.polyline(
+        [[-31.9522, 115.8614], [22.2855, 114.1577]],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var circle_marker_9b7a98ed4a9d84a2472e9df405b988b1 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_381c4213bfdc60bd016341b712dd65d9 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_86d901ced62c11da324cba7aaddc46da = $(`<div id="html_86d901ced62c11da324cba7aaddc46da" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_381c4213bfdc60bd016341b712dd65d9.setContent(html_86d901ced62c11da324cba7aaddc46da);
+
+
+
+    circle_marker_9b7a98ed4a9d84a2472e9df405b988b1.bindPopup(popup_381c4213bfdc60bd016341b712dd65d9)
+        ;
+
+
+
+
+    var marker_c3b420a2164449d133a5ff705eefe81b = L.marker(
+        [50.1109, 8.682],
+        {}
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_88f9d837848d1888944f553ca8464128 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_cc84a2ba8a2479d87df7217b651b6439 = $(`<div id="html_cc84a2ba8a2479d87df7217b651b6439" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_88f9d837848d1888944f553ca8464128.setContent(html_cc84a2ba8a2479d87df7217b651b6439);
+
+
+
+    marker_c3b420a2164449d133a5ff705eefe81b.bindPopup(popup_88f9d837848d1888944f553ca8464128)
+        ;
+
+
+
+
+    marker_c3b420a2164449d133a5ff705eefe81b.bindTooltip(
+        `<div>
+                     DE-CIX Deutscher Commercial Internet Exchange - IXP
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var circle_marker_a225293d42fa65b15ef0358ccccf4e6e = L.circleMarker(
+        [-33.8678, 151.207],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_de563d18ccbfbba03af5f84e33096e15 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_a4f5823cd4d879bec7d6844b77b69f9a = $(`<div id="html_a4f5823cd4d879bec7d6844b77b69f9a" style="width: 100.0%; height: 100.0%;">Resilans AB</div>`)[0];
+    popup_de563d18ccbfbba03af5f84e33096e15.setContent(html_a4f5823cd4d879bec7d6844b77b69f9a);
+
+
+
+    circle_marker_a225293d42fa65b15ef0358ccccf4e6e.bindPopup(popup_de563d18ccbfbba03af5f84e33096e15)
+        ;
+
+
+
+
+    var circle_marker_658cf471f01580dbc027d829c6fe0543 = L.circleMarker(
+        [45.4643, 9.1885],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_2a88ffdd5e3b3d52fababc210eb9d823 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_cd3d305294fcff4ccd9a97322cdfc310 = $(`<div id="html_cd3d305294fcff4ccd9a97322cdfc310" style="width: 100.0%; height: 100.0%;">Venus Business Communications Limited</div>`)[0];
+    popup_2a88ffdd5e3b3d52fababc210eb9d823.setContent(html_cd3d305294fcff4ccd9a97322cdfc310);
+
+
+
+    circle_marker_658cf471f01580dbc027d829c6fe0543.bindPopup(popup_2a88ffdd5e3b3d52fababc210eb9d823)
+        ;
+
+
+
+
+    var circle_marker_258ad1fe3b678a0f615620ee9ad77360 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_979e84a416e7a7ef91d1cc7b972bd927 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_0170b4245cbcba5905b3f04e7bf1cb37 = $(`<div id="html_0170b4245cbcba5905b3f04e7bf1cb37" style="width: 100.0%; height: 100.0%;">M247 Europe SRL</div>`)[0];
+    popup_979e84a416e7a7ef91d1cc7b972bd927.setContent(html_0170b4245cbcba5905b3f04e7bf1cb37);
+
+
+
+    circle_marker_258ad1fe3b678a0f615620ee9ad77360.bindPopup(popup_979e84a416e7a7ef91d1cc7b972bd927)
+        ;
+
+
+
+
+    var circle_marker_992ccfa7dab5f43096fccee1fc34719e = L.circleMarker(
+        [53.4809, -2.2374],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_2c209012ec7ba557d258da27048bc5b2 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_f7a982da574888f88749b0d0ff4040da = $(`<div id="html_f7a982da574888f88749b0d0ff4040da" style="width: 100.0%; height: 100.0%;">M247 Europe SRL</div>`)[0];
+    popup_2c209012ec7ba557d258da27048bc5b2.setContent(html_f7a982da574888f88749b0d0ff4040da);
+
+
+
+    circle_marker_992ccfa7dab5f43096fccee1fc34719e.bindPopup(popup_2c209012ec7ba557d258da27048bc5b2)
+        ;
+
+
+
+
+    var circle_marker_94de8e0fc90ef37fc121cbffbfb21e1b = L.circleMarker(
+        [37.7757, -122.3952],
+        { "bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_b1706c13936ae11bbce4cd02897f46f9 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_03f122cb8f2410643f1f68776ec52caa = $(`<div id="html_03f122cb8f2410643f1f68776ec52caa" style="width: 100.0%; height: 100.0%;">CloudFlare Inc.</div>`)[0];
+    popup_b1706c13936ae11bbce4cd02897f46f9.setContent(html_03f122cb8f2410643f1f68776ec52caa);
+
+
+
+    circle_marker_94de8e0fc90ef37fc121cbffbfb21e1b.bindPopup(popup_b1706c13936ae11bbce4cd02897f46f9)
+        ;
+
+
+
+
+    ant_path_45b4a2026be22d34e7022746d63092b9 = L.polyline.antPath(
+        [[-33.8678, 151.207], [45.4643, 9.1885], [50.1109, 8.682], [53.4809, -2.2374], [37.7757, -122.3952]],
+        { "bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var circle_marker_2aeff4b56a4d4c46dc5c418024061092 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_87e629cff3a687a27251af7dc8f792c0 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_49c7a82c5da09b74591e9e5a1a4cfdf2 = $(`<div id="html_49c7a82c5da09b74591e9e5a1a4cfdf2" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_87e629cff3a687a27251af7dc8f792c0.setContent(html_49c7a82c5da09b74591e9e5a1a4cfdf2);
+
+
+
+    circle_marker_2aeff4b56a4d4c46dc5c418024061092.bindPopup(popup_87e629cff3a687a27251af7dc8f792c0)
+        ;
+
+
+
+
+    var marker_6b778ea400047f754aad4a95afde661e = L.marker(
+        [50.1109, 8.682],
+        {}
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_da7d9c7e2896689015a9f5dae64e051a = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_420b1654639879a151ca36bd11b52089 = $(`<div id="html_420b1654639879a151ca36bd11b52089" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_da7d9c7e2896689015a9f5dae64e051a.setContent(html_420b1654639879a151ca36bd11b52089);
+
+
+
+    marker_6b778ea400047f754aad4a95afde661e.bindPopup(popup_da7d9c7e2896689015a9f5dae64e051a)
+        ;
+
+
+
+
+    marker_6b778ea400047f754aad4a95afde661e.bindTooltip(
+        `<div>
+                     DE-CIX Deutscher Commercial Internet Exchange - IXP
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var circle_marker_9f427bfa3cc31bebd28ad6f0f365fe0a = L.circleMarker(
+        [-33.8678, 151.207],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_fc7bfa63f0d9848d479d11d28dd0593a = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_f341b3d780751403968445c6b0a0b5be = $(`<div id="html_f341b3d780751403968445c6b0a0b5be" style="width: 100.0%; height: 100.0%;">NetActuate Inc</div>`)[0];
+    popup_fc7bfa63f0d9848d479d11d28dd0593a.setContent(html_f341b3d780751403968445c6b0a0b5be);
+
+
+
+    circle_marker_9f427bfa3cc31bebd28ad6f0f365fe0a.bindPopup(popup_fc7bfa63f0d9848d479d11d28dd0593a)
+        ;
+
+
+
+
+    var circle_marker_c118d7da2625ccee7168eda4e0c9ced1 = L.circleMarker(
+        [47.6024, -122.326],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_7ec60151ae5cbcd3b85d10bdb8b9931a = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_6f93f597b708a3f9146c06efd56d32ad = $(`<div id="html_6f93f597b708a3f9146c06efd56d32ad" style="width: 100.0%; height: 100.0%;">F5 Inc.</div>`)[0];
+    popup_7ec60151ae5cbcd3b85d10bdb8b9931a.setContent(html_6f93f597b708a3f9146c06efd56d32ad);
+
+
+
+    circle_marker_c118d7da2625ccee7168eda4e0c9ced1.bindPopup(popup_7ec60151ae5cbcd3b85d10bdb8b9931a)
+        ;
+
+
+
+
+    var circle_marker_c9fd671fe26da935dcb2fb73cb8b9005 = L.circleMarker(
+        [37.7749, -122.4194],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_f26c944c559f9b483e89b0e0f71b70f1 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_329b0b60be12b7f12e4fd229142d9ef5 = $(`<div id="html_329b0b60be12b7f12e4fd229142d9ef5" style="width: 100.0%; height: 100.0%;">PayPal Inc.</div>`)[0];
+    popup_f26c944c559f9b483e89b0e0f71b70f1.setContent(html_329b0b60be12b7f12e4fd229142d9ef5);
+
+
+
+    circle_marker_c9fd671fe26da935dcb2fb73cb8b9005.bindPopup(popup_f26c944c559f9b483e89b0e0f71b70f1)
+        ;
+
+
+
+
+    var circle_marker_892ad2f5bd61b3638ff1a3bfe1a4e5f3 = L.circleMarker(
+        [37.323, -122.0322],
+        { "bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_b723337e80948166ac9a160eb945e498 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_32a487fe95ed7d3582be736a84246063 = $(`<div id="html_32a487fe95ed7d3582be736a84246063" style="width: 100.0%; height: 100.0%;">PayPal Inc.</div>`)[0];
+    popup_b723337e80948166ac9a160eb945e498.setContent(html_32a487fe95ed7d3582be736a84246063);
+
+
+
+    circle_marker_892ad2f5bd61b3638ff1a3bfe1a4e5f3.bindPopup(popup_b723337e80948166ac9a160eb945e498)
+        ;
+
+
+
+
+    ant_path_fe1b4617429a803c302b3029c3af0406 = L.polyline.antPath(
+        [[-33.8678, 151.207], [47.6024, -122.326], [37.7749, -122.4194], [37.323, -122.0322]],
+        { "bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var circle_marker_857766397a3675ea231ce138f1ee10c5 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_d6c424cd7406367702dd53582a3bfe3a = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_36f62aa79dcc86e954abfacd0d9c9690 = $(`<div id="html_36f62aa79dcc86e954abfacd0d9c9690" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_d6c424cd7406367702dd53582a3bfe3a.setContent(html_36f62aa79dcc86e954abfacd0d9c9690);
+
+
+
+    circle_marker_857766397a3675ea231ce138f1ee10c5.bindPopup(popup_d6c424cd7406367702dd53582a3bfe3a)
+        ;
+
+
+
+
+    var marker_a64f6d41c555734104ad1c23c55db53e = L.marker(
+        [50.1109, 8.682],
+        {}
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_e0500630ab008a922ed44a8cd711c997 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_b8243993a47541bb253aada73435e811 = $(`<div id="html_b8243993a47541bb253aada73435e811" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_e0500630ab008a922ed44a8cd711c997.setContent(html_b8243993a47541bb253aada73435e811);
+
+
+
+    marker_a64f6d41c555734104ad1c23c55db53e.bindPopup(popup_e0500630ab008a922ed44a8cd711c997)
+        ;
+
+
+
+
+    marker_a64f6d41c555734104ad1c23c55db53e.bindTooltip(
+        `<div>
+                     DE-CIX Deutscher Commercial Internet Exchange - IXP
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var circle_marker_b5a3bdff3eea8e322515e205a81bce88 = L.circleMarker(
+        [-33.8678, 151.207],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_7bd584990438b651ddcfc9728ec99aff = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_2f3bb03f6d0a15e690cb90bb2cf5257c = $(`<div id="html_2f3bb03f6d0a15e690cb90bb2cf5257c" style="width: 100.0%; height: 100.0%;">OVH Australia Pty Ltd</div>`)[0];
+    popup_7bd584990438b651ddcfc9728ec99aff.setContent(html_2f3bb03f6d0a15e690cb90bb2cf5257c);
+
+
+
+    circle_marker_b5a3bdff3eea8e322515e205a81bce88.bindPopup(popup_7bd584990438b651ddcfc9728ec99aff)
+        ;
+
+
+
+
+    var circle_marker_d2bb232bfbc52c369a5f54eed2cfe7ce = L.circleMarker(
+        [-31.9522, 115.8614],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_b93bbde5e1fefa8b5a7918d3f3260d58 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_95029da5664d1736307bd4962c10adc9 = $(`<div id="html_95029da5664d1736307bd4962c10adc9" style="width: 100.0%; height: 100.0%;">They Call Me Joe</div>`)[0];
+    popup_b93bbde5e1fefa8b5a7918d3f3260d58.setContent(html_95029da5664d1736307bd4962c10adc9);
+
+
+
+    circle_marker_d2bb232bfbc52c369a5f54eed2cfe7ce.bindPopup(popup_b93bbde5e1fefa8b5a7918d3f3260d58)
+        ;
+
+
+
+
+    var circle_marker_9ff807ea928045bcc50adcf241ba8a66 = L.circleMarker(
+        [22.2855, 114.1577],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_60de919e27af99c2ef13ae4aa6aca125 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_e71591ee1b9858cb2e19305f32e3e6dd = $(`<div id="html_e71591ee1b9858cb2e19305f32e3e6dd" style="width: 100.0%; height: 100.0%;">OVH AP</div>`)[0];
+    popup_60de919e27af99c2ef13ae4aa6aca125.setContent(html_e71591ee1b9858cb2e19305f32e3e6dd);
+
+
+
+    circle_marker_9ff807ea928045bcc50adcf241ba8a66.bindPopup(popup_60de919e27af99c2ef13ae4aa6aca125)
+        ;
+
+
+
+
+    var circle_marker_c068e62d993535d75f4972b0acea496d = L.circleMarker(
+        [47.6829, -122.1209],
+        { "bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_b79b2291737d0611b3cceec679bea593 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_d9f187e7013c28919be851cd5a640e5c = $(`<div id="html_d9f187e7013c28919be851cd5a640e5c" style="width: 100.0%; height: 100.0%;">Microsoft Corporation</div>`)[0];
+    popup_b79b2291737d0611b3cceec679bea593.setContent(html_d9f187e7013c28919be851cd5a640e5c);
+
+
+
+    circle_marker_c068e62d993535d75f4972b0acea496d.bindPopup(popup_b79b2291737d0611b3cceec679bea593)
+        ;
+
+
+
+
+    ant_path_f1b1c445b33e4fd676db5ac5d6c26f38 = L.polyline.antPath(
+        [[-33.8678, 151.207], [-31.9522, 115.8614], [22.2855, 114.1577], [47.6829, -122.1209]],
+        { "bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var poly_line_8413afbcaad2bdb63926de03e9313ebf = L.polyline(
+        [[-33.8678, 151.207], [-31.9522, 115.8614]],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var poly_line_366c7b56801ac98087090289c9b3e108 = L.polyline(
+        [[-31.9522, 115.8614], [22.2855, 114.1577]],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var circle_marker_8b50dd858c1e1199bcd132893777e4b5 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_79d9900589daad660bd8a1f1596bc5e5 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_6b8c00bbeb5f13650e9279b81cadd398 = $(`<div id="html_6b8c00bbeb5f13650e9279b81cadd398" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_79d9900589daad660bd8a1f1596bc5e5.setContent(html_6b8c00bbeb5f13650e9279b81cadd398);
+
+
+
+    circle_marker_8b50dd858c1e1199bcd132893777e4b5.bindPopup(popup_79d9900589daad660bd8a1f1596bc5e5)
+        ;
+
+
+
+
+    var marker_2fc9d59d9a37abd14b2514da4371cbf8 = L.marker(
+        [50.1109, 8.682],
+        {}
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_2455a27a520c9cef7bcad925f1ea9d70 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_7a698dec75245031378a6cf7888e8b92 = $(`<div id="html_7a698dec75245031378a6cf7888e8b92" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_2455a27a520c9cef7bcad925f1ea9d70.setContent(html_7a698dec75245031378a6cf7888e8b92);
+
+
+
+    marker_2fc9d59d9a37abd14b2514da4371cbf8.bindPopup(popup_2455a27a520c9cef7bcad925f1ea9d70)
+        ;
+
+
+
+
+    marker_2fc9d59d9a37abd14b2514da4371cbf8.bindTooltip(
+        `<div>
+                     DE-CIX Deutscher Commercial Internet Exchange - IXP
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var circle_marker_dc5f86d165d961979e550bacd6edf954 = L.circleMarker(
+        [-33.8678, 151.207],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_835e524c2ec0fddedc4c78af4986f50f = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_bc839409951e0d9eb0c8671b9c1f5fcb = $(`<div id="html_bc839409951e0d9eb0c8671b9c1f5fcb" style="width: 100.0%; height: 100.0%;">Amazon.com Inc.</div>`)[0];
+    popup_835e524c2ec0fddedc4c78af4986f50f.setContent(html_bc839409951e0d9eb0c8671b9c1f5fcb);
+
+
+
+    circle_marker_dc5f86d165d961979e550bacd6edf954.bindPopup(popup_835e524c2ec0fddedc4c78af4986f50f)
+        ;
+
+
+
+
+    var circle_marker_e81fc61eef397d7b46af496ed3d730d9 = L.circleMarker(
+        [-32.0077, 151.9633],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_096d0ee0a8d5e7d6af1a975dfc4580ed = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_0bca7a86505ec8d6c9c6a79a6e2cca3a = $(`<div id="html_0bca7a86505ec8d6c9c6a79a6e2cca3a" style="width: 100.0%; height: 100.0%;">Telstra Amazon</div>`)[0];
+    popup_096d0ee0a8d5e7d6af1a975dfc4580ed.setContent(html_0bca7a86505ec8d6c9c6a79a6e2cca3a);
+
+
+
+    circle_marker_e81fc61eef397d7b46af496ed3d730d9.bindPopup(popup_096d0ee0a8d5e7d6af1a975dfc4580ed)
+        ;
+
+
+
+
+    var circle_marker_ce411901cd4593adadec6adfaa1f38be = L.circleMarker(
+        [37.5483, -121.9886],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_30a8a63298c9e2ee3b5dd7f27d8ea368 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_448e19f892971749a0920526590cc0bc = $(`<div id="html_448e19f892971749a0920526590cc0bc" style="width: 100.0%; height: 100.0%;">Telstra Global</div>`)[0];
+    popup_30a8a63298c9e2ee3b5dd7f27d8ea368.setContent(html_448e19f892971749a0920526590cc0bc);
+
+
+
+    circle_marker_ce411901cd4593adadec6adfaa1f38be.bindPopup(popup_30a8a63298c9e2ee3b5dd7f27d8ea368)
+        ;
+
+
+
+
+    var circle_marker_ab754a591e537cb2862796152a453927 = L.circleMarker(
+        [37.3394, -121.895],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_037efcce80be7b4f85baaa9683ee6c4e = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_4e77392eba7352d344aafb852d265618 = $(`<div id="html_4e77392eba7352d344aafb852d265618" style="width: 100.0%; height: 100.0%;">Tinet GmbH</div>`)[0];
+    popup_037efcce80be7b4f85baaa9683ee6c4e.setContent(html_4e77392eba7352d344aafb852d265618);
+
+
+
+    circle_marker_ab754a591e537cb2862796152a453927.bindPopup(popup_037efcce80be7b4f85baaa9683ee6c4e)
+        ;
+
+
+
+
+    var circle_marker_d12bc06d894568d51b36c4800f4e9a2f = L.circleMarker(
+        [40.7132, -74.0061],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_c7e6eb291c08d4516503d65b28b2ed8a = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_cd4fd9596af3cb2888d8ffee9d45b451 = $(`<div id="html_cd4fd9596af3cb2888d8ffee9d45b451" style="width: 100.0%; height: 100.0%;">GTT Communications Inc.</div>`)[0];
+    popup_c7e6eb291c08d4516503d65b28b2ed8a.setContent(html_cd4fd9596af3cb2888d8ffee9d45b451);
+
+
+
+    circle_marker_d12bc06d894568d51b36c4800f4e9a2f.bindPopup(popup_c7e6eb291c08d4516503d65b28b2ed8a)
+        ;
+
+
+
+
+    var circle_marker_7a4f64e1c2936ce35a2559d6864a8a2c = L.circleMarker(
+        [38.8954, -77.0395],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_ed5a6f8f7d332aa118dce8089e152f7e = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_2326bc16420329835aae605b79fa1bf6 = $(`<div id="html_2326bc16420329835aae605b79fa1bf6" style="width: 100.0%; height: 100.0%;">GTT</div>`)[0];
+    popup_ed5a6f8f7d332aa118dce8089e152f7e.setContent(html_2326bc16420329835aae605b79fa1bf6);
+
+
+
+    circle_marker_7a4f64e1c2936ce35a2559d6864a8a2c.bindPopup(popup_ed5a6f8f7d332aa118dce8089e152f7e)
+        ;
+
+
+
+
+    var circle_marker_ba5d170e86d90975ed50c9e4d0ebf1f8 = L.circleMarker(
+        [40.79, -74.0621],
+        { "bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_5513b370e5669e3575fb7786cfc86f04 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_0bf3f44e762804edccfba6f92bc01091 = $(`<div id="html_0bf3f44e762804edccfba6f92bc01091" style="width: 100.0%; height: 100.0%;">InterServer Inc.</div>`)[0];
+    popup_5513b370e5669e3575fb7786cfc86f04.setContent(html_0bf3f44e762804edccfba6f92bc01091);
+
+
+
+    circle_marker_ba5d170e86d90975ed50c9e4d0ebf1f8.bindPopup(popup_5513b370e5669e3575fb7786cfc86f04)
+        ;
+
+
+
+
+    ant_path_5ebc61ecfdeba4249ba68fd150a41506 = L.polyline.antPath(
+        [[-33.8678, 151.207], [-32.0077, 151.9633], [37.5483, -121.9886], [37.3394, -121.895], [40.7132, -74.0061], [38.8954, -77.0395], [40.79, -74.0621]],
+        { "bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var poly_line_dfdb4a139a4a6431cf8d7ad32746ca7e = L.polyline(
+        [[-33.8678, 151.207], [-32.0077, 151.9633]],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var poly_line_4f3ccdd95be4781dfa191b998cf525d0 = L.polyline(
+        [[-32.0077, 151.9633], [37.5483, -121.9886]],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var poly_line_4cf314f5fbd5cf4f7546ef4062839062 = L.polyline(
+        [[37.5483, -121.9886], [37.3394, -121.895]],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var circle_marker_f926c883af7fcbff3313041d94fb0c41 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_a28b5e7815eac96f3921574c79796047 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_bbc18799dfa8d8e01017793f52024a4e = $(`<div id="html_bbc18799dfa8d8e01017793f52024a4e" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_a28b5e7815eac96f3921574c79796047.setContent(html_bbc18799dfa8d8e01017793f52024a4e);
+
+
+
+    circle_marker_f926c883af7fcbff3313041d94fb0c41.bindPopup(popup_a28b5e7815eac96f3921574c79796047)
+        ;
+
+
+
+
+    var marker_1d6d922a7d7d5ccdfa8e9c218cadd5ca = L.marker(
+        [50.1109, 8.682],
+        {}
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_1fa88b04777d0e3154f32e62a843ccec = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_c66f22a1695b1ba0145c1129e9ee05ea = $(`<div id="html_c66f22a1695b1ba0145c1129e9ee05ea" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_1fa88b04777d0e3154f32e62a843ccec.setContent(html_c66f22a1695b1ba0145c1129e9ee05ea);
+
+
+
+    marker_1d6d922a7d7d5ccdfa8e9c218cadd5ca.bindPopup(popup_1fa88b04777d0e3154f32e62a843ccec)
+        ;
+
+
+
+
+    marker_1d6d922a7d7d5ccdfa8e9c218cadd5ca.bindTooltip(
+        `<div>
+                     DE-CIX Deutscher Commercial Internet Exchange - IXP
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var circle_marker_694fb9b99ec6cefd762e5f354be4f3bc = L.circleMarker(
+        [-33.8678, 151.207],
+        { "bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_bed71598a37fbf483d3841fa6aaf184b = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_722bcdb52d67931afa00ab62c6a52c29 = $(`<div id="html_722bcdb52d67931afa00ab62c6a52c29" style="width: 100.0%; height: 100.0%;">Resilans AB</div>`)[0];
+    popup_bed71598a37fbf483d3841fa6aaf184b.setContent(html_722bcdb52d67931afa00ab62c6a52c29);
+
+
+
+    circle_marker_694fb9b99ec6cefd762e5f354be4f3bc.bindPopup(popup_bed71598a37fbf483d3841fa6aaf184b)
+        ;
+
+
+
+
+    var circle_marker_df6b96e99995b92ebeb5afaa4d0a4b9d = L.circleMarker(
+        [45.4643, 9.1885],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_14e05f11dfe9f0899b6648df8702e661 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_f6bed9d39395c098df42617a3ab4949d = $(`<div id="html_f6bed9d39395c098df42617a3ab4949d" style="width: 100.0%; height: 100.0%;">Venus Business</div>`)[0];
+    popup_14e05f11dfe9f0899b6648df8702e661.setContent(html_f6bed9d39395c098df42617a3ab4949d);
+
+
+
+    circle_marker_df6b96e99995b92ebeb5afaa4d0a4b9d.bindPopup(popup_14e05f11dfe9f0899b6648df8702e661)
+        ;
+
+
+
+
+    var circle_marker_02cfe2a1af6d09c1b8bc765a7d62d723 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_50705cd6a9625a2c02d11bb4ecb0a7dc = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_a3822d6dffe20e530dc99af8ccdfa7c0 = $(`<div id="html_a3822d6dffe20e530dc99af8ccdfa7c0" style="width: 100.0%; height: 100.0%;">M247 Europe SRL</div>`)[0];
+    popup_50705cd6a9625a2c02d11bb4ecb0a7dc.setContent(html_a3822d6dffe20e530dc99af8ccdfa7c0);
+
+
+
+    circle_marker_02cfe2a1af6d09c1b8bc765a7d62d723.bindPopup(popup_50705cd6a9625a2c02d11bb4ecb0a7dc)
+        ;
+
+
+
+
+    var circle_marker_84a496f559d7f7b9da1c38007fd91ff7 = L.circleMarker(
+        [53.4809, -2.2374],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_ac1b3a4dfa218da67284715030c6301e = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_61fa04afd83b4939500ada5d514f72b4 = $(`<div id="html_61fa04afd83b4939500ada5d514f72b4" style="width: 100.0%; height: 100.0%;">M247 Europe SRL</div>`)[0];
+    popup_ac1b3a4dfa218da67284715030c6301e.setContent(html_61fa04afd83b4939500ada5d514f72b4);
+
+
+
+    circle_marker_84a496f559d7f7b9da1c38007fd91ff7.bindPopup(popup_ac1b3a4dfa218da67284715030c6301e)
+        ;
+
+
+
+
+    var circle_marker_b8d80e8ef8de502e44e36d18fff96d9a = L.circleMarker(
+        [37.7757, -122.3952],
+        { "bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_97b1def796b9f5deca3c26136a590928 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_099da4eacf45e5d378407671913c256b = $(`<div id="html_099da4eacf45e5d378407671913c256b" style="width: 100.0%; height: 100.0%;">Fastly Inc.</div>`)[0];
+    popup_97b1def796b9f5deca3c26136a590928.setContent(html_099da4eacf45e5d378407671913c256b);
+
+
+
+    circle_marker_b8d80e8ef8de502e44e36d18fff96d9a.bindPopup(popup_97b1def796b9f5deca3c26136a590928)
+        ;
+
+
+
+
+    ant_path_1695dc834d67d9c388a5343eafa02389 = L.polyline.antPath(
+        [[-33.8678, 151.207], [45.4643, 9.1885], [50.1109, 8.682], [53.4809, -2.2374], [37.7757, -122.3952]],
+        { "bubblingMouseEvents": true, "color": "blue", "dashArray": [10, 20], "dashOffset": null, "delay": 400, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 1 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var circle_marker_fd537726402ad25548aeeb77e45d20b2 = L.circleMarker(
+        [50.1109, 8.682],
+        { "bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3 }
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_f810d0524a313848c987ca409f9438e9 = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_126f7e3f9abfb6deaedb2001622f4b43 = $(`<div id="html_126f7e3f9abfb6deaedb2001622f4b43" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_f810d0524a313848c987ca409f9438e9.setContent(html_126f7e3f9abfb6deaedb2001622f4b43);
+
+
+
+    circle_marker_fd537726402ad25548aeeb77e45d20b2.bindPopup(popup_f810d0524a313848c987ca409f9438e9)
+        ;
+
+
+
+
+    var marker_e5721c8ed270c066309a97db5b27005f = L.marker(
+        [50.1109, 8.682],
+        {}
+    ).addTo(map_d0ee41645a44a433c275d92252e6476b);
+
+
+    var popup_bac9012456795abf102486fde100919b = L.popup({ "maxWidth": "100%" });
+
+
+
+    var html_d7c7fa0df8ce6567c5effd24f7ff610b = $(`<div id="html_d7c7fa0df8ce6567c5effd24f7ff610b" style="width: 100.0%; height: 100.0%;">DE-CIX Deutscher Commercial Internet Exchange - IXP</div>`)[0];
+    popup_bac9012456795abf102486fde100919b.setContent(html_d7c7fa0df8ce6567c5effd24f7ff610b);
+
+
+
+    marker_e5721c8ed270c066309a97db5b27005f.bindPopup(popup_bac9012456795abf102486fde100919b)
+        ;
+
+
+
+
+    marker_e5721c8ed270c066309a97db5b27005f.bindTooltip(
+        `<div>
+                     DE-CIX Deutscher Commercial Internet Exchange - IXP
+                 </div>`,
+        { "sticky": true }
+    );
+
+</script>
+
+</html>

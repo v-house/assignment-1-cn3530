@@ -31,12 +31,48 @@
         }
 
         .team-info {
-            text-align: center;
-            margin-top: 30px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
         }
 
-        .team-members {
+        .team-info p {
+            font-size: 16px;
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .team-info #team-number {
             font-weight: bold;
+            color: #ff9900;
+        }
+
+        .team-info .team-members {
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .team-info .team-member {
+            display: flex;
+            align-items: center;
+        }
+
+        .team-info .member-roll {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .team-info .member-name {
+            font-size: 16px;
+        }
+
+        .team-info .team-member:not(:last-child) {
+            margin-bottom: 5px;
         }
 
         .understanding {
@@ -69,6 +105,69 @@
         .open-button:hover {
             background-color: #555;
         }
+
+        .links-section {
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .links-section a {
+            padding: 10px 20px;
+            background-color: #ff9900;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .links-section a:hover {
+            background-color: #e66a00;
+        }
+
+        .visualization-section-understanding {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .visualization-section-understanding p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .visualization-button {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .visualization-button button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .visualization-button button:hover {
+            background-color: #555;
+        }
+
+        .visualization-button span {
+            margin-left: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
     </style>
 </head>
 
@@ -84,9 +183,32 @@
         </div>
         <div class="team-info">
             <p>Group <span id="team-number">40</span></p>
-            <p class="team-members">Team Members: <span id="team-members">K Vivek Kumar (CS21BTECH11026), </span><span
-                    id="team-members">Adarsh Suresh Bhende (CS21BTECH11008), </span><span id="team-members">Jarupula Sai
-                    Kumar (CS21BTECH11023)</span></p>
+            <p class="team-members">Team Members:</p>
+            <div class="team-member">
+                <span class="member-roll">CS21BTECH11026</span>
+                <span class="member-name">K Vivek Kumar</span>
+            </div>
+            <div class="team-member">
+                <span class="member-roll">CS21BTECH11008</span>
+                <span class="member-name">Adarsh Suresh Bhende</span>
+            </div>
+            <div class="team-member">
+                <span class="member-roll">CS21BTECH11023</span>
+                <span class="member-name">Jarupula Sai Kumar</span>
+            </div>
+        </div>
+        <div class="links-section">
+            <a href="https://github.com/v-house/assignment-1-cn3530.git" target="_blank">Link to Documentation</a>
+            <a href="https://github.com/v-house/assignment-1-cn3530.git" target="_blank">Link to GitHub Repository</a>
+            <a href="https://docs.google.com/spreadsheets/d/1ZuNJxUlX7y1exhH0BRBQ1ZtEih9MzCVHy_NRCm0NXDY/edit?usp=sharing"
+                target="_blank">Link to Google Sheets</a>
+        </div>
+        <div class="visualization-section-understanding">
+            <h3>Understanding Visualization</h3>
+            <p>All the sources and destination plotted on a single map, it can be viewed from the below link.</p>
+            <div class="visualization-button">
+                <button onclick="window.open('all_understanding.html', '_blank')">Open Visualization</button>
+            </div>
         </div>
         <section id="understandings">
             <div class="understanding">
@@ -97,6 +219,24 @@
             </div>
             <div class="understanding">
                 <h3>Understanding 2</h3>
+                <p>Source: <span class="source"></span></p>
+                <p>IP Address: <span class="ip-address"></span></p>
+                <button class="open-button">Open HTML</button>
+            </div>
+            <div class="understanding">
+                <h3>Understanding 3</h3>
+                <p>Source: <span class="source"></span></p>
+                <p>IP Address: <span class="ip-address"></span></p>
+                <button class="open-button">Open HTML</button>
+            </div>
+            <div class="understanding">
+                <h3>Understanding 4</h3>
+                <p>Source: <span class="source"></span></p>
+                <p>IP Address: <span class="ip-address"></span></p>
+                <button class="open-button">Open HTML</button>
+            </div>
+            <div class="understanding">
+                <h3>Understanding 5</h3>
                 <p>Source: <span class="source"></span></p>
                 <p>IP Address: <span class="ip-address"></span></p>
                 <button class="open-button">Open HTML</button>
@@ -114,6 +254,21 @@
                 source: 'IIT Hyderabad',
                 ipAddress: '192.168.137.1',
                 htmlFile: 'understanding_2.html'
+            },
+            {
+                source: 'Netherlands',
+                ipAddress: '10.20.0.1',
+                htmlFile: 'understanding_3.html'
+            },
+            {
+                source: 'Sydney, Australia',
+                ipAddress: '43.245.48.1',
+                htmlFile: 'understanding_4.html'
+            },
+            {
+                source: 'Japan',
+                ipAddress: '10.2.0.1',
+                htmlFile: 'understanding_5.html'
             },
         ];
         const understandingElements = document.querySelectorAll('.understanding');
