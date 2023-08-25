@@ -13,11 +13,17 @@
             background-color: #f2f2f2;
         }
 
+        .divider {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 20px 0;
+        }
+
         header {
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 30px 0;
+            padding: 20px 0;
         }
 
         .container {
@@ -30,50 +36,50 @@
             text-align: center;
         }
 
-        .team-info {
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 30px;
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
-        .team-info p {
-            font-size: 16px;
-            margin: 0;
-            padding: 5px 0;
+        .team-table th,
+        .team-table td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
         }
 
-        .team-info #team-number {
+        .team-table th {
+            background-color: #007bff;
+            color: white;
             font-weight: bold;
-            color: #ff9900;
+            text-align: center;
         }
 
-        .team-info .team-members {
+        .team-table td {
+            text-align: left;
+        }
+
+        #team-number {
             font-weight: bold;
-            color: #333;
-            margin-top: 10px;
         }
 
-        .team-info .team-member {
-            display: flex;
-            align-items: center;
+        .team-table th,
+        .team-table td {
+            border-color: #ddd;
+            padding: 10px;
         }
 
-        .team-info .member-roll {
+        .team-table th {
+            background-color: #f0f7ff;
+            color: #007bff;
             font-weight: bold;
+            text-align: center;
+        }
+
+        .team-table td {
             color: #555;
-            margin-right: 10px;
-            font-size: 16px;
         }
 
-        .team-info .member-name {
-            font-size: 16px;
-        }
-
-        .team-info .team-member:not(:last-child) {
-            margin-bottom: 5px;
-        }
 
         .understanding {
             background-color: #fff;
@@ -107,26 +113,46 @@
         }
 
         .links-section {
-            max-width: 800px;
+            max-width: 100%;
             margin: 20px auto;
+            padding: 0 10px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
         }
 
         .links-section a {
-            padding: 10px 20px;
+            margin-bottom: 10px;
+            padding: 10px 15px;
             background-color: #ff9900;
             color: white;
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
             transition: background-color 0.3s;
+            text-align: center;
         }
 
         .links-section a:hover {
             background-color: #e66a00;
         }
+
+        @media (min-width: 600px) {
+            .links-section {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .links-section a {
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+
+            .links-section a:last-child {
+                margin-right: 0;
+            }
+        }
+
 
         .visualization-section-understanding {
             background-color: #fff;
@@ -136,15 +162,32 @@
             border-radius: 5px;
         }
 
-        .visualization-section-understanding p {
-            font-size: 16px;
+        .visualization-header {
+            text-align: center;
+            /* Center the heading */
             margin-bottom: 10px;
+        }
+
+        .visualization-header h3 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .visualization-content {
+            text-align: center;
+            /* Center the content */
+        }
+
+        .visualization-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            /* Increase spacing between paragraphs */
         }
 
         .visualization-button {
             display: flex;
-            justify-content: flex-start;
-            align-items: center;
+            justify-content: center;
+            /* Center the button */
         }
 
         .visualization-button button {
@@ -162,11 +205,73 @@
             background-color: #555;
         }
 
-        .visualization-button span {
-            margin-left: 10px;
+        @media (max-width: 768px) {
+            .visualization-content p {
+                font-size: 14px;
+                /* Decrease font size for mobile */
+            }
+
+            .visualization-button button {
+                padding: 8px 16px;
+                /* Adjust button padding for mobile */
+            }
+        }
+    </style>
+
+    <style>
+        #understandings {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .understanding {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            width: calc(50% - 10px);
+            box-sizing: border-box;
+        }
+
+        .understanding h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .understanding p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .understanding .source {
+            color: #007bff;
+        }
+
+        .understanding .ip-address {
+            color: #00a859;
+        }
+
+        .open-button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
             font-weight: bold;
-            text-decoration: none;
-            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .open-button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .understanding {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -179,69 +284,93 @@
     </header>
     <div class="container">
         <div class="course-info">
-            <h2>Assignment 1</h2>
+            <h1>Assignment 1</h1>
+            <hr class="divider">
         </div>
-        <div class="team-info">
-            <p>Group <span id="team-number">40</span></p>
-            <p class="team-members">Team Members:</p>
-            <div class="team-member">
-                <span class="member-roll">CS21BTECH11026</span>
-                <span class="member-name">K Vivek Kumar</span>
-            </div>
-            <div class="team-member">
-                <span class="member-roll">CS21BTECH11008</span>
-                <span class="member-name">Adarsh Suresh Bhende</span>
-            </div>
-            <div class="team-member">
-                <span class="member-roll">CS21BTECH11023</span>
-                <span class="member-name">Jarupula Sai Kumar</span>
-            </div>
+        <table class="team-table">
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        <h3>Group <span id="team-number">40</span></h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>K Vivek Kumar</td>
+                    <td>CS21BTECH11026</td>
+                </tr>
+                <tr>
+                    <td>Adarsh Suresh Bhende</td>
+                    <td>CS21BTECH11008</td>
+                </tr>
+                <tr>
+                    <td>Jarupula Sai Kumar</td>
+                    <td>CS21BTECH11023</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <hr class="divider">
+        <div class="course-info">
+            <h2>Important Links</h2>
         </div>
         <div class="links-section">
-            <a href="https://github.com/v-house/assignment-1-cn3530.git" target="_blank">Link to Documentation</a>
+            <a href="https://drive.google.com/file/d/146CKkcgUV3ma9L9Ho6eDCBWGA1c9lF_R/view?usp=sharing"
+                target="_blank">Link to the Report</a>
             <a href="https://github.com/v-house/assignment-1-cn3530.git" target="_blank">Link to GitHub Repository</a>
             <a href="https://docs.google.com/spreadsheets/d/1ZuNJxUlX7y1exhH0BRBQ1ZtEih9MzCVHy_NRCm0NXDY/edit?usp=sharing"
                 target="_blank">Link to Google Sheets</a>
         </div>
+        <hr class="divider">
         <div class="visualization-section-understanding">
-            <h3>Understanding Visualization</h3>
-            <p>All the sources and destination plotted on a single map, it can be viewed from the below link.</p>
-            <div class="visualization-button">
-                <button onclick="window.open('all_understanding.html', '_blank')">Open Visualization</button>
+            <div class="visualization-header">
+                <h3>Understanding Visualization</h3>
+            </div>
+            <div class="visualization-content">
+                <p>All the sources and destinations are plotted on a single map. Click the button below to view the
+                    visualization.</p>
+                <div class="visualization-button">
+                    <button onclick="window.open('all_understanding.html', '_blank')">Open Visualization</button>
+                </div>
             </div>
         </div>
+
+        <hr class="divider">
         <section id="understandings">
             <div class="understanding">
                 <h3>Understanding 1</h3>
                 <p>Source: <span class="source"></span></p>
                 <p>IP Address: <span class="ip-address"></span></p>
-                <button class="open-button">Open HTML</button>
+                <button class="open-button">Open map</button>
             </div>
             <div class="understanding">
                 <h3>Understanding 2</h3>
                 <p>Source: <span class="source"></span></p>
                 <p>IP Address: <span class="ip-address"></span></p>
-                <button class="open-button">Open HTML</button>
+                <button class="open-button">Open map</button>
             </div>
             <div class="understanding">
                 <h3>Understanding 3</h3>
                 <p>Source: <span class="source"></span></p>
                 <p>IP Address: <span class="ip-address"></span></p>
-                <button class="open-button">Open HTML</button>
+                <button class="open-button">Open map</button>
             </div>
             <div class="understanding">
                 <h3>Understanding 4</h3>
                 <p>Source: <span class="source"></span></p>
                 <p>IP Address: <span class="ip-address"></span></p>
-                <button class="open-button">Open HTML</button>
+                <button class="open-button">Open map</button>
             </div>
             <div class="understanding">
                 <h3>Understanding 5</h3>
                 <p>Source: <span class="source"></span></p>
                 <p>IP Address: <span class="ip-address"></span></p>
-                <button class="open-button">Open HTML</button>
+                <button class="open-button">Open map</button>
             </div>
         </section>
+        <hr class="divider">
     </div>
     <script>
         const understandings = [
